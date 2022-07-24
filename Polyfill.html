@@ -1,0 +1,23 @@
+<script>
+	let obj1 = {
+		fname : "Abhishek",
+		lname : "Dwivedy"
+	};
+
+	function fullName (city, state){
+		return "My name is "+this.fname+" "+this.lname+" and I am from "+city +" "+state
+	};
+	
+	Function.prototype.mybind = function(...args1){
+		let func = this;
+		let param = args1.slice(1);
+		return function(...args2){
+			return func.call(args1[0], ...param, ...args2)
+		}
+	}
+
+	let displayName = fullName.mybind(obj1, "Dehradun");
+
+	console.log(displayName("uk"))
+
+</script>
